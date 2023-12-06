@@ -24,4 +24,18 @@ class ArticleTypeMasterModel extends Model
             ->get()->getResultArray();
         }
     }
+                  
+    public function updateArticletype($dataArticletype)
+    {
+        
+        return $this->db->table('articletype')->update([
+          'name'     	=> $dataArticletype['name'], 
+            ], ['id' => $dataArticletype['id']]);
+    }
+                  
+
+    public function deleteArticletype($ArticletypeID)
+	{
+		return $this->db->table('articletype')->delete(['id' => $ArticletypeID]);
+	}
 }

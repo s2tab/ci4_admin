@@ -7,10 +7,10 @@
             </div>
             <div class="card-body">
             <form action="<?=base_url('ArticleTypeMaster/createArticletype');?>" method="post">
-       <div class="form-group">
-            <label for="inputName">Name</label>
-            <input type="text" class="form-control" name="inputName" id="inputName" required>
-        </div>
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="text" class="form-control" name="inputName" id="inputName" required>
+            </div>
         <div class="d-grid gap-2 mt-3">
                         <button class="btn btn-primary" type="submit">Save Data</button>
                     </div>

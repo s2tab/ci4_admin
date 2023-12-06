@@ -71,6 +71,8 @@ class Filters extends BaseConfig
     public array $filters = [
         'permission' => [
             'before' => ['users/*'], // Apply to routes in the 'users' group
+            'before' => ['vehicleowner/*'], // Apply to routes in the 'users' group
+            // 'before' => ['Vehicleowner/'], // Apply to routes in the 'users' group
             // Add more routes or groups as needed
         ],
     ];

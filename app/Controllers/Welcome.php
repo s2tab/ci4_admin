@@ -10,7 +10,7 @@ class Welcome extends BaseController
 	{
 	}
 
-	public function index(){
+	public function index__(){
 		$data = array_merge($this->data, [
 			'title' 	=> 'Users Page',
 			'Users'		=> $this->userModel->getUser(),
@@ -19,7 +19,7 @@ class Welcome extends BaseController
 		// return view('users/userList', $data);
         return view('dashboard',$data);
 	}
-	public function index_()
+	public function index()
 	{
 		if (session()->get('isLoggedIn') == TRUE) {
 			return redirect()->to(base_url('home'));

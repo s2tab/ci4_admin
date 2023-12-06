@@ -9,18 +9,24 @@
                 <div class="table-responsive">
                 <table class="table">
         <thead> 
-           <th>Id</th> 
+           <th>Sr No</th> 
            <th>Name</th> 
-           <th>Createdat</th> 
-           <th>Updatedat</th> 
+           <th>Action</th>
          </thead>
         <tbody>
-        <?php foreach($Articletype as $articletype ): ?>   
+        <?php 
+        $i=1;
+        foreach($Articletype as $articletype ): ?>   
             <tr>  
-                <td><?= $articletype['id'] ?> </td>  
+                <td><?= $i++?> </td>  
                 <td><?= $articletype['name'] ?> </td>  
-                <td><?= $articletype['createdAt'] ?> </td>  
-                <td><?= $articletype['updatedAt'] ?> </td>  
+                <td>
+                   <a href="<?php echo base_url('ArticleTypeMaster/editArticletype?id='.$articletype["id"]);?>"> <span class="fa fa-edit"></span></a>
+                   <a href="<?php echo base_url('ArticleTypeMaster/deleteArticletype?id='.$articletype["id"]);?>"> <span class="fa fa-trash-alt"></span></a>
+                   <!-- <a href="<?php echo base_url('ArticleTypeMaster/deleteArticletype?id='.$articletype["id"]);?>"> <span class="fa fa-eye"></span></a> -->
+                    
+                </td>  
+                 
             </tr>
         <?php endforeach; ?>
         </tbody>

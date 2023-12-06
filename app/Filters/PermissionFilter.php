@@ -11,6 +11,9 @@ class PermissionFilter implements FilterInterface
 
     public function before(RequestInterface $request, $arguments = null)
     {
+        if (session()->get('isLoggedIn') != TRUE) :
+			return redirect()->to(base_url('/'));
+		endif;
         $url = $request->uri->getSegment(1);
         $roleId = session()->get('role');
         // Logic to check permissions before the route is executed
@@ -30,8 +33,7 @@ class PermissionFilter implements FilterInterface
         // $ci = &get_instance();
         $userModel = new \App\Models\UserModel();
         $permission = $userModel->getAccessMenu($roleId);
-        echo "<pre>";
-        print_r($permission);
+        // print_r($permission);die;
         $found = false;
         foreach ($permission as $item) {
             if ($item['url'] === $url) {
@@ -39,7 +41,6 @@ class PermissionFilter implements FilterInterface
                 break; // URL found, no need to continue searching
             }
         }
-
         if ($found) {
            return true;
         } else {

@@ -50,3 +50,9 @@ function getUserPermissions($userRole){
     echo "</pre>";
     die();   
 }
+
+function pa($array){
+    echo "<pre>";
+    print_r($array);
+    echo "</pre>";
+}
