@@ -68,10 +68,12 @@ class Filters extends BaseConfig
      * Example:
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
+    
     public array $filters = [
         'permission' => [
             'before' => ['users/*'], // Apply to routes in the 'users' group
             'before' => ['vehicleowner/*'], // Apply to routes in the 'users' group
+            'before' => ['vehicle/*'], // Apply to routes in the 'users' group
             // 'before' => ['Vehicleowner/'], // Apply to routes in the 'users' group
             // Add more routes or groups as needed
         ],

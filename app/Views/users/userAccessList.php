@@ -37,7 +37,8 @@
                                             <div class="form-check">
                                                 <input class="form-check-input menu_permission" type="checkbox" <?= check_menu_access($role['id'], $menu['menu_id']) ?> data-role="<?= $role['id'] ?>" data-menu="<?= $menu['menu_id'] ?>">
                                                 <label class="form-check-label">
-                                                    <?= (check_menu_access($role['id'], $menu['id']) == 'checked') ? 'Access Granted' : 'Access Not Granted' ?>
+
+                                                    <?= (check_menu_access($role['id'], $menu['menu_id']) == 'checked') ? 'Access Granted' : 'Access Not Granted' ?>
                                                 </label>
                                             </div>
                                         </td>
@@ -54,6 +55,7 @@
                                                     <div class="form-check ms-4">
                                                         <input class="form-check-input submenu_permission" type="checkbox" <?= check_submenu_access($role['id'], $subMenu['submenu_id']) ?> data-role="<?= $role['id'] ?>" data-submenu="<?= $subMenu['submenu_id'] ?>">
                                                         <label class="form-check-label">
+            
                                                             <?= (check_submenu_access($role['id'], $subMenu['submenu_id']) == 'checked') ? 'Access Granted' : 'Access Not Granted' ?>
                                                         </label>
                                                     </div>

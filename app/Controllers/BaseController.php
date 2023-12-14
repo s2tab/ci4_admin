@@ -39,7 +39,6 @@ class BaseController extends Controller
 	 * @param LoggerInterface   $logger
 	 */
 
-
 	protected $data 	= [];
 	protected $userModel;
 	protected $session;
@@ -76,4 +75,6 @@ class BaseController extends Controller
 			'MenuCategory' 	=> $this->userModel->getAccessMenuCategory(session()->get('role'))
 		];
 	}
+
+	
 }

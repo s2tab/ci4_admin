@@ -24836,3 +24836,19 @@ body[data-theme="colored"] .simplebar-scrollbar:before {
   width: 264px;
 }
 
+/* Dashboard  */
+
+.lr_master_add_new{
+  border: 1px solid #ff4200;
+  padding: 2px 25px;
+  background-color: white;
+  color: #ff4200;
+  transition: 0.5s;
+}
+.lr_master_add_new:hover{
+  background-color: #ff4200;
+  color: White;
+}
+
+/* Dashboard End */
+

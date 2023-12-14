@@ -58,11 +58,21 @@ $routes->post('users/changeMenuCategoryPermission', 'Users::changeMenuCategoryPe
 $routes->post('users/changeSubMenuPermission', 'Users::changeSubMenuPermission');
 });
 
-$routes->group('Vehicleowner', ['filter' => 'permission'], function ($routes) {
+$routes->group('vehicleowner', ['filter' => 'permission'], function ($routes) {
 	$routes->get('/', 'vehicleowner::index');
 	$routes->get('/form', 'vehicleowner::form');
 
 });
+$routes->group('vehicle', ['filter' => 'permission'], function ($routes) {
+	$routes->get('/', 'vehicle::index');
+
+});
+$routes->group('lrmaster', ['filter' => 'permission'], function ($routes) {
+	$routes->get('/', 'lrmaster::index');
+
+});
+
+
 
 $routes->post('menuManagement/createMenuCategory', 'Developers\MenuManagement::createMenuCategory');
 $routes->post('menuManagement/createMenu', 'Developers\MenuManagement::createMenu');

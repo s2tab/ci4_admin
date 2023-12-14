@@ -27,9 +27,9 @@ class PermissionFilter implements FilterInterface
     {
         //
     }
-    private function checkPermission($roleId, $url)
+    public function checkPermission($roleId, $url)
     {
-
+        // die($url);
         // $ci = &get_instance();
         $userModel = new \App\Models\UserModel();
         $permission = $userModel->getAccessMenu($roleId);
@@ -46,7 +46,7 @@ class PermissionFilter implements FilterInterface
         } else {
             return false;
         }
-        die;
-        return true; // For demonstration purposes, always allowing access
+        // die;
+        // return true; // For demonstration purposes, always allowing access
     }
 }
