@@ -10,13 +10,19 @@ class LRModel extends Model
     {
         if ($LrDetailsID) {
             return $this->db->table('lr_details')
-                ->where(['lr_details.id' => $LrDetailsID])
+                ->where(['lr_details.lr_id' => $LrDetailsID])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('lr_details')
             ->where(['lr_details.date' => date("Y-m-d")])
                 ->get()->getResultArray();
         }
+    }
+    public function getLrArticle($LrDetailsID = false)
+    {
+        return $this->db->table('lr_article')
+                ->where(['lr_article.lr_id' => $LrDetailsID])
+                ->get()->getResultArray();
     }
 
     public function filterLRDetails($period, $fromDate = false, $toDate = false)
@@ -76,7 +82,10 @@ class LRModel extends Model
             'grand_total' => $dataLrDetails['inputGrandTotal'],
             "created_by"=>session()->get('username')
         ]);
+
         if($lr_id){
+        $last_insert_id = $this->db->insertID();
+
             $insertData = array();
 
             // Assuming all arrays are of the same length
@@ -84,7 +93,7 @@ class LRModel extends Model
     
             for ($i = 0; $i < $rowCount; $i++) {
                 $insertData[] = array(
-                    "lr_id"=>$lr_id,
+                    "lr_id"=>$last_insert_id,
                     "invoice_no" => $dataLrDetails['invoiceNo'][$i],
                     "charge_type" => $dataLrDetails['chargeType'][$i],
                     "article_type" => $dataLrDetails['articleType'][$i],
@@ -96,7 +105,7 @@ class LRModel extends Model
             $builder = $this->db->table("lr_article");
             $builder->insertBatch($insertData);
             // Perform bulk insert
-            return $lr_id;
+            return $last_insert_id;
         }
        return 0;
 

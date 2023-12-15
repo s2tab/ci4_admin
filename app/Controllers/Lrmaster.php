@@ -56,6 +56,27 @@
 				}
 			}
 
+			public function viewLrMasterDetails(){
+				$id = $this->request->getGet('id');
+				$data = array_merge($this->data, [
+					'title'         => 'L-R',
+					'LrDetails'    => $this->LrDetailsModel->getLrDetails($id),
+					'LrArticle'    => $this->LrDetailsModel->getLrArticle($id),
+
+				]);
+				return view('lrMaster/lRReceipt', $data);
+			}
+			public function editLrMasterDetails(){
+				$id = $this->request->getGet('id');
+				$data = array_merge($this->data, [
+					'title'         => 'L-R',
+					'Branch'    => $this->BranchModel->getBranch(),
+					'LrDetails'    => $this->LrDetailsModel->getLrDetails($id),
+					'LrArticle'    => $this->LrDetailsModel->getLrArticle($id),
+
+				]);
+				return view('lrMaster/lrMasterEdit', $data);
+			}
 			public function updateLrDetails()
 			{
 				$updateLrDetails = $this->LrDetailsModel->updateLrDetails($this->request->getPost(null, FILTER_UNSAFE_RAW));

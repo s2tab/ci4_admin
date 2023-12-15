@@ -83,6 +83,7 @@ foreach ($Branch as $branch) {
                         <th>Destination</th>
                         <th>LR Type</th>
                         <th>Total Wt</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -100,6 +101,11 @@ foreach ($Branch as $branch) {
                                 <td><?=$lr['delivery_destination']?></td>
                                 <td><?=$lr['lr_type']?></td>
                                 <td><?=0?></td>
+                                <td>
+                                    <a href="<?php echo base_url('lrmaster/editLrMasterDetails?id='.$lr["lr_id"]);?>"> <span class="fa fa-edit"></span></a>
+                                    <a href="<?php echo base_url('lrmaster/viewLrMasterDetails?id='.$lr["lr_id"]);?>"> <span class="fa fa-eye"></span></a>
+                                </td>
+
                             </tr>    
                         <?php
                         }
@@ -202,6 +208,8 @@ foreach ($Branch as $branch) {
                                 table.clear(); // Clear existing table data
                                 for (var i = 0; i < lrData.length; i++) {
                                     var lr = lrData[i];
+                                    var show = '<a href="<?php echo base_url('lrmaster/viewLrMasterDetails?id='); ?>' + lr.lr_id + '"><span class="fa fa-eye"></span></a> <a href="<?php echo base_url('lrmaster/editLrMasterDetails?id='); ?>' + lr.lr_id + '"><span class="fa fa-edit"></span></a>';
+                                    
                                     table.row.add([
                                         i + 1, // Assuming i starts from 0 for row number
                                         lr.date,
@@ -210,7 +218,8 @@ foreach ($Branch as $branch) {
                                         lr.consignee_name,
                                         lr.delivery_destination,
                                         lr.lr_type,
-                                        0 // Example value
+                                        0, // Example value
+                                        show
                                     ]);
                                 }
                                 table.draw(); // Redraw the table with the updated data

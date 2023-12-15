@@ -3,19 +3,20 @@
 		<h1 class="h3 mb-3"><strong><?=$title;?></strong> </h1>
 		<div class="card">
             <div class="card-body">
-                <form action="<?=base_url('lrmaster/createLrDetails');?>" method="post">
+                <form  method="post">
                     <!-- <main id="main" class="main"> -->
                       <section class="lr_detail_section1">
                         <div class="container-fluid m-0 p-0">
                             <div class="row justify-content-center">
                                 <div class=" col-lg-7 p-3 align-right" >
-                                    <button class="btn btn-warning  btn-bordered w-md waves-light">Save</button>
+                                    <?=pa($LrDetails)?>
+                                    <button class="btn btn-warning  btn-bordered w-md waves-light">Update</button>
                                 </div>
                                 <div class="col-lg-7 bg-white border p-3 me-2">
                                     <div class="row mb-3">
                                         <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                             <div>
-                                                <input type="text" name="inputDeliveryDestination" placeholder="Delivery Destination" class="w-100 form-control">
+                                                <input type="text" value ="<?=$LrDetails['delivery_destination']?>" name="inputDeliveryDestination" placeholder="Delivery Destination" class="w-100 form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-6 mb-2">
@@ -25,7 +26,7 @@
                                                     <?php
                                                         foreach ($Branch as $branch) {
                                                             ?>
-                                                                <option value="<?=$branch['id']?>"><?=$branch['name']?></option>
+                                                                <option <?php echo $LrDetails['branch']==$branch['id']?"selected":""?> value="<?=$branch['id']?>"><?=$branch['name']?></option>
                                                             <?php
                                                             }
                                                             ?>
@@ -33,7 +34,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-6 mb-2">
-                                            <input type="date" name="inputDate" class="w-100 form-control" style="height: 29px; font-size: 12px;">
+                                            <input type="date" value="<?=$LrDetails['date']?>" name="inputDate" class="w-100 form-control" style="height: 29px; font-size: 12px;">
                                         </div>
                                     </div>
 
@@ -41,28 +42,28 @@
                                         <h6>Consignor (From)</h6>
                                         <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsignorName"  placeholder="Consignor Name" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignor_name']?>" name="inputConsignorName"  placeholder="Consignor Name" class="w-100 form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-6 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsignorMobileNo" placeholder="Mobile No" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignor_mobile_no']?>" name="inputConsignorMobileNo" placeholder="Mobile No" class="w-100 form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-6 mb-2">
-                                            <input type="text" name="inputConsignorGstn" placeholder="GSTN" class="w-100 form-control" >
+                                            <input type="text" value="<?=$LrDetails['consignor_gstn']?>" name="inputConsignorGstn" placeholder="GSTN" class="w-100 form-control" >
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col-lg-9 col-md-9 col-sm-12 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsignorAddress" placeholder="Address" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignor_address']?>" name="inputConsignorAddress" placeholder="Address" class="w-100 form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsignorState" placeholder="State" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignor_state']?>" name="inputConsignorState" placeholder="State" class="w-100 form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -71,28 +72,28 @@
                                         <h6>Consignee (To)</h6>
                                         <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsigneeName" placeholder="Consignee Name" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignee_name']?>" name="inputConsigneeName" placeholder="Consignee Name" class="w-100 form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-6 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsigneeMobileNo" placeholder="Mobile No" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignee_mobile_no']?>" name="inputConsigneeMobileNo" placeholder="Mobile No" class="w-100 form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-6 mb-2">
-                                            <input type="text" name="inputConsigneeGstn" placeholder="GSTN" class="w-100 form-control">
+                                            <input type="text" value="<?=$LrDetails['consignee_gstn']?>" name="inputConsigneeGstn" placeholder="GSTN" class="w-100 form-control">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col-lg-9 col-md-9 col-sm-12 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsigneeAddress" placeholder="Address" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignee_address']?>" name="inputConsigneeAddress" placeholder="Address" class="w-100 form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 mb-2">
                                             <div>
-                                                <input type="text" name="inputConsigneeState" placeholder="State" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['consignee_state']?>" name="inputConsigneeState" placeholder="State" class="w-100 form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +102,7 @@
                                         <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                                             <div>
                                                 <h6>Charge Type <span style="color: red; font-size: 14px;">*</span> </h6>
-                                                <input type="text" placeholder="Article/Fix" class="w-100 form-control article-charge-type">
+                                                <input type="text"  placeholder="Article/Fix" class="w-100 form-control article-charge-type">
                                             </div>
                                         </div>
 
@@ -122,7 +123,7 @@
                                         <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                                             <div>
                                                 <h6>Article Amt</h6>
-                                                <input type="text" placeholder="Article Amount" class="w-100 form-control">
+                                                <input type="text" placeholder="Article Amount" class="w-100 form-control article-article-amt">
                                             </div>
                                         </div>
 
@@ -196,14 +197,35 @@
                                         <th>No. Of Article</th>
                                         <th>Amount</th>
                                         <th scope="col">Edit / Delete </th>
-                                        <tbody class="article-body"></tbody>
+                                        <tbody class="article-body">
+                                        <?php
+                                            $i=1;
+                                            foreach ($LrArticle as $article){
+                                        ?>
+                                        <tr>
+                                            <td><?=$i++?></td>
+                                            <td><input type='hidden'  name='invoiceNo[]' value='<?=$article["invoice_no"]?>'><?=$article["invoice_no"]?></td>
+                                            <td><input type='hidden'  name='chargeType[]' value='<?=$article["article_type"]?>'><?=$article["article_type"]?></td>
+                                            <td><input type='hidden'  name='articleType[]' value='<?=$article["article_type"]?>'><?=$article["article_type"]?></td>
+                                            <td><input type='hidden'  name='contains[]' value='<?=$article["contains"]?>'><?=$article["contains"]?></td>
+                                            <td><input type='hidden'  name='NoOfArticles[]' value='<?=$article["article_no"]?>'><?=$article["article_no"]?></td>
+                                            <td><input type='hidden'  name='wtAmount[]' value='<?=$article["wt_amt"]?>'><?=$article["wt_amt"]?></td>
+                                            <td>
+                                                <span class=" btn-action fa fa-edit "  data-value = "edit"  data-id="<?=$article["id"]?>"></span>
+                                                <span class=" btn-action fa fa-trash " data-value = "delete" data-id="<?=$article["id"]?>"></span>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                            }
+                                        ?>  
+                                        </tbody>
                                     </table>
                                     <div class="row mb-3 d-flex align-items-end" style="margin-top: 150px;">
                                         <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                                             <div>
                                                 <h6>Tr Mode <span style="color: red; font-size: 14px;">*</span> </h6>
                                                 <select name="inputTrMode" id="" class="w-100 form-control" style="height: 29px; font-size: 12px;">
-                                                    <option value="" selected> Road</option>
+                                                    <option value="" > Road</option>
                                                     <option value="" > Test1</option>
                                                     <option value="" > Test2</option>
                                                 </select>
@@ -213,14 +235,14 @@
                                         <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                                             <div>
                                                 <h6>E-Way Bill No</h6>
-                                                <input type="text" name="inputEWayBillNo" placeholder="e.g.12345678" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['e_way_bill_no']?>" name="inputEWayBillNo" placeholder="e.g.12345678" class="w-100 form-control">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                                             <div>
                                                 <h6>Truck No</h6>
-                                                <input type="text" name="inputTruckNo" placeholder="e.g. MH-12-mh-12" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['truck_no']?>" name="inputTruckNo" placeholder="e.g. MH-12-mh-12" class="w-100 form-control">
                                             </div>
                                         </div>
 
@@ -238,7 +260,7 @@
                                         <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                                             <div>
                                                 <h6>L x W X H</h6>
-                                                <input type="text" name="inputSize" placeholder="e.g" class="w-100 form-control">
+                                                <input type="text" value="<?=$LrDetails['size']?>" name="inputSize" placeholder="e.g" class="w-100 form-control">
                                             </div>
                                         </div>
 
@@ -250,11 +272,11 @@
                                     <div class="d-flex align-items-center justify-content-between mb-3">
                                         <h6 class="m-0">POD</h6>
                                         <label for="">
-                                            <input checked name="inputPod" value="yes" type="radio">
+                                            <input <?php echo $LrDetails['pod']=="yes" ? "checked" : "" ?> name="inputPod" value="yes" type="radio">
                                             Yes
                                         </label>
                                         <label for=""> 
-                                            <input  name="inputPod" value="no" type="radio">
+                                            <input <?php echo $LrDetails['pod'] == "no" ? "checked" : "" ?> name="inputPod" value="no" type="radio">
                                             No
                                         </label>
                                     </div>
@@ -265,7 +287,7 @@
                                         </div>
                                         <div class="col-lg-8">
                                             <select name="inputLrType" id="" class="w-100 form-control" style="height: 29px; font-size: 12px;">
-                                                <option value="" selected>TBB</option>
+                                                <option value="" <?php echo $LrDetails['lr_type'] == "no" ? "selected" : "" ?>>TBB</option>
                                                 <option value="" >Test1</option>
                                                 <option value="" >Test2</option>
                                             </select>
@@ -277,7 +299,7 @@
                                             <h6 class="m-0 p-0">Manual LR No</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputManualLrNo" class="w-100 form-control" placeholder="e.g.LR/01">
+                                            <input type="text" value="<?=$LrDetails['manual_lr_no']?>" name="inputManualLrNo" class="w-100 form-control" placeholder="e.g.LR/01">
                                         </div>
                                     </div>
 
@@ -286,7 +308,7 @@
                                             <h6 class="m-0 p-0">Delivery At</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputDeliverAt" class="w-100 form-control" placeholder="Godown">
+                                            <input type="text" value="<?=$LrDetails['deliver_at']?>" name="inputDeliverAt" class="w-100 form-control" placeholder="Godown">
                                         </div>
                                     </div>
 
@@ -296,7 +318,7 @@
                                         </div>
                                         <div class="col-lg-8">
                                             <select name="inputLoadType" id="" class="w-100 form-control" style="height: 29px; font-size: 12px;">
-                                                <option value="" selected>Part Load</option>
+                                                <option value="" <?php echo $LrDetails['load_type'] == "no" ? "selected" : "" ?>>Part Load</option>
                                                 <option value="" >Test1</option>
                                                 <option value="" >Test2</option>
                                             </select>
@@ -308,8 +330,8 @@
                                             <h6 class="m-0 p-0">Freight</h6>
                                         </div>
                                         <div class="col-lg-8"> 
-                                            <input type="text" value="0" disabled name="inputFreight1" class="freightAmount w-100 text-end form-control" placeholder="00" >
-                                            <input type="hidden" value="0"  name="inputFreight" class="freightAmount w-100 text-end form-control" placeholder="00" >
+                                            <input type="text" value="<?=$LrDetails['freight']?>" disabled name="inputFreight1" class="freightAmount w-100 text-end form-control" placeholder="00" >
+                                            <input type="hidden" value="<?=$LrDetails['freight']?>" name="inputFreight" class="freightAmount w-100 text-end form-control" placeholder="00" >
                                         </div>
                                     </div>
 
@@ -318,7 +340,7 @@
                                             <h6 class="m-0 p-0">Hamali</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputHamali" class="amount-calculation w-100 text-end form-control" placeholder="00">
+                                            <input type="text" value="<?=$LrDetails['hamali']?>" name="inputHamali" class="amount-calculation w-100 text-end form-control" placeholder="00">
                                         </div>
                                     </div>
 
@@ -327,7 +349,7 @@
                                             <h6 class="m-0 p-0">B.C</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputBc" class=" amount-calculation w-100 text-end form-control" placeholder="20.00">
+                                            <input type="text" value="<?=$LrDetails['bc']?>" name="inputBc" class=" amount-calculation w-100 text-end form-control" placeholder="20.00">
                                         </div>
                                     </div>
 
@@ -336,7 +358,7 @@
                                             <h6 class="m-0 p-0">Collection</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputCollection" class=" amount-calculation w-100 text-end form-control" placeholder="00">
+                                            <input type="text" value="<?=$LrDetails['collection']?>" name="inputCollection" class=" amount-calculation w-100 text-end form-control" placeholder="00">
                                         </div>
                                     </div>
 
@@ -345,7 +367,7 @@
                                             <h6 class="m-0 p-0">Detantion</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputDetantion" class=" amount-calculation w-100 text-end form-control" placeholder="00">
+                                            <input type="text" value="<?=$LrDetails['detantion']?>" name="inputDetantion" class=" amount-calculation w-100 text-end form-control" placeholder="00">
                                         </div>
                                     </div>
 
@@ -354,7 +376,7 @@
                                             <h6 class="m-0 p-0">Door Delivery</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputDoorDelivery" class=" amount-calculation w-100 text-end form-control" placeholder="00">
+                                            <input type="text" value="<?=$LrDetails['door_delivery']?>" name="inputDoorDelivery" class=" amount-calculation w-100 text-end form-control" placeholder="00">
                                         </div>
                                     </div>
 
@@ -363,7 +385,7 @@
                                             <h6 class="m-0 p-0">Other</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputOther" class="amount-calculation w-100 text-end form-control" placeholder="00">
+                                            <input type="text" value="<?=$LrDetails['other']?>" name="inputOther" class="amount-calculation w-100 text-end form-control" placeholder="00">
                                         </div>
                                     </div>
 
@@ -372,7 +394,7 @@
                                             <h6 class="m-0 p-0">Carting</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputCarting" class="amount-calculation w-100 text-end form-control" placeholder="00">
+                                            <input type="text" value="<?=$LrDetails['carting']?>" name="inputCarting" class="amount-calculation w-100 text-end form-control" placeholder="00">
                                         </div>
                                     </div>
 
@@ -381,8 +403,8 @@
                                             <h6 class="m-0 p-0">Total</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" disabled name="inputTotal1" class="calculation-total w-100 text-end form-control" placeholder="00" >
-                                            <input type="text"  name="inputTotal" class="calculation-total w-100 text-end form-control" placeholder="00" >
+                                            <input type="text" value="<?=$LrDetails['total']?>" disabled name="inputTotal1" class="calculation-total w-100 text-end form-control" placeholder="00" >
+                                            <input type="hidden" value="<?=$LrDetails['total']?>" name="inputTotal" class="calculation-total w-100 text-end form-control" placeholder="00" >
                                         </div>
                                     </div>
 
@@ -391,7 +413,7 @@
                                             <h6 class="m-0 p-0">Grand Total</h6>
                                         </div>
                                         <div class="col-lg-8">
-                                            <input type="text" name="inputGrandTotal" class="w-100 text-end form-control" placeholder="00" >
+                                            <input type="text" value="<?=$LrDetails['grand_total']?>"  name="inputGrandTotal" class="w-100 text-end form-control" placeholder="00" >
                                         </div>
                                     </div>
 
@@ -487,6 +509,29 @@
                     $(".article-wt-amount").val("");
                     $(".article-no-of-articles").val("");
                     }
+                });
+
+
+                $(".btn-action").on("click", function(){
+                    var id = $(this).data("id");
+                    var value = $(this).data("value");
+                    if(value == "edit"){
+                        var data = <?=json_encode($LrArticle)?>;
+                        var selectedArticle = data.find(function(d) {
+                        if(d.id == id){
+                            return d;
+                        }
+                        });
+                        $(".article-charge-type").val(selectedArticle.charge_type);
+                        $(".article-no-of-articles").val(selectedArticle.article_no);
+                        $(".article-article-type").val(selectedArticle.article_type);
+                        $(".article-article-amt").val(selectedArticle.article_amount);
+                        $(".article-charge-type").val(selectedArticle.charge_type);
+                        $(".article-charge-type").val(selectedArticle.charge_type);
+                        $(".article-charge-type").val(selectedArticle.charge_type);
+                        $(".article-charge-type").val(selectedArticle.charge_type);
+                    }
+                    
                 });
             });
         </script>
